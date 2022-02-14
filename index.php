@@ -1,37 +1,6 @@
+<?php header('Content-type: text/html; charset=utf-8'); ?>
 <?php include 'components/session-check.php' ?>
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
-		<title>Always Keeping Girls in School - Bethel</title>
-		
-		<meta name="keywords" content="" />
-		<meta name="description" content="" />
-
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
-		<meta property ="og:site_name" content="" />
-		<meta property="og:url" content="" />
-		<meta property="og:image" content="" />
-		<meta property="og:type" content="website" />
-		<meta property="og:description" content="" />
-	
-		<meta property ="twitter:title" content="" />
-		<meta property ="twitter:description" content="" />
-		<meta property ="twitter:url" content="" />
-		<meta property ="twitter:image" content="" />
-
-		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-		<link rel="icon" type="image/ico" href="assets/images/icon.png"/>
-		<link rel="stylesheet" href="assets/css/bootstrap.css">
-		<link rel="stylesheet" href="assets/css/font-awesome.css">
-		<link rel="stylesheet" href="assets/css/flexslider.css">
-		<link rel="stylesheet" href="assets/css/menuscript.css">
-		<link rel="stylesheet" href="assets/css/style.css">
-		<script src="assets/js/jquery.min.js"></script>
-</head>
-
+<?php include 'controllers/base/home_head.php' ?>
 <body class="home">
 <?php include 'controllers/navigation/first-navigation.php'; ?>
 <div class="container12 banner">
@@ -130,7 +99,6 @@
 <?php include 'controllers/base/footer.php'; ?>
 <script src="assets/js/jquery.flexslider.js"></script>
 <script src="assets/js/menuscript.js"></script>
-<script src="assets/js/smoothscroll.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
       $('.clients').flexslider({

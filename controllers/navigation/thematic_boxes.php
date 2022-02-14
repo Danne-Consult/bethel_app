@@ -16,7 +16,7 @@ $rowy = $resulty->fetch_assoc();
 						echo "<div class='col-md-12'><p>No thematics added!</p></div>";
 				}else{
 					while($rowx = $resultx->fetch_array()){
-						$msg = '<div class="col-md-3" ><div class="themebox box'.$rowx["course_number"].'" style="background:url(manager/assets/uploads/'.$rowx["course_banner"].') no-repeat center; background-size:cover;"><div class="titlebox"><h4><span>Session '.$rowx["course_number"].'</span><br />'.$rowx["course_title"].'</h4>';
+						$msg = '<div class="col-md-3" ><div class="themebox box'.$rowx["course_number"].'" style="background:url(manager/assets/uploads/'.$rowx["course_banner"].') no-repeat center; background-size:cover;"><div class="titlebox"><h4><span>Unit '.$rowx["course_number"].'</span><br />'.$rowx["course_title"].'</h4>';
 						
 						if($rowy['levelon']==$rowx["course_number"]){$msg .= '<p class="aligncenter"><a href="course.php?course='.$rowx["course_number"].'" class="morebtn">Get Started</a></p>';}
 						if($rowy['levelon'] > $rowx["course_number"]){$msg .= '<p class="aligncenter" style="color:#ffffff;"><i>completed</i></p>';}

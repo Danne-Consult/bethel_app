@@ -1,3 +1,4 @@
+<?php header('Content-type: text/html; charset=utf-8'); ?>
 <?php include 'components/session-check.php' ?>
 <?php include 'components/get_course.php' ?>
 <?php include 'controllers/tests/gettest.php' ?>
@@ -47,7 +48,7 @@
 		<div class="bannerimg" style="background: url(<?php if(!$rowcourse['course_banner']==""){ echo "manager/assets/uploads/".$rowcourse['course_banner']; }else{ echo "assets/images/img2.jpg";} ?>) no-repeat fixed center; background-size:cover;">
 			<article>
 				<div class="title">
-				<h3><?php if(!$rowcourse['course_number']==""){ echo "Thematic ".$rowcourse['course_number']; }; ?> - <?php if(!$rowcourse['course_title']==""){ echo $rowcourse['course_title']; }; ?></h3>
+				<h3><?php if(!$rowcourse['course_number']==""){ echo "Unit ".$rowcourse['course_number']; }; ?> - <?php if(!$rowcourse['course_title']==""){ echo $rowcourse['course_title']; }; ?></h3>
 			</div>
 			</article>
 		</div>
@@ -55,7 +56,7 @@
 	
 	<div class="container12 course">
 		<article>
-			<div class="row">
+			<div class="row justify-content-center">
 				<div class="col-md-3 sidebar" >
 					<h4>Sections</h4>
 					<?php 
@@ -108,12 +109,12 @@
 					
 
 				</div>
-				<div class="col-md-2 sidebar">
+				<!--<div class="col-md-2 sidebar">
 					<div class="darkside">
 						<h4>Notes and Reference</h4>
 						<?php include 'components/get_links.php'; ?>
 					</div>
-				</div>
+				</div>-->
 			</div>
 		</article>
 	</div>

@@ -264,15 +264,15 @@ object, embed, video{max-width:100%; height:auto} */
 	font-size:15px;
 }
 .button:hover{background-color:#6B5D31;}
-}
+
 .button:active {
     background: #ab770f;
 }
 
-.morebtn{font-weight: 400; font-size: 90%; color: #fff !important; padding: 10px 20px;  background-color: #ff4200; -webkit-border-radius: 4px; -moz-border-radius:4px; o-border-radius:4px; border-radius: 4px;}
+.morebtn{font-weight: 400; font-size: 90%; color: #fff !important; padding: 10px 20px;  background-color: #ff4200; border-radius: 4px;}
 .morebtn:hover{background-color: #d23a05; color:#fff !important;}
 
-.nextbtn{ border:none !important; font-weight: 400; font-size: 90%; color: #fff !important; padding: 6px 16px;  background-color: #3e690b; -webkit-border-radius: 4px; -moz-border-radius:4px; o-border-radius:4px; border-radius: 4px;}
+.nextbtn{ border:none !important; font-weight: 400; font-size: 90%; color: #fff !important; padding: 6px 16px;  background-color: #3e690b;  border-radius: 4px;}
 .nextbtn:hover{background-color: #73a539; color:#fff !important;}
 
 .readmore{font-weight: 700; font-size: 90%;}
@@ -301,7 +301,7 @@ header .navigation{ float: right; width: 60%; font-weight: 700; margin-top: 2em;
 header .navigation .topnav{float: right; width: auto;}
 header .navigation .topnav .mainlinks{margin:0px; font-weight:400;}
 header .navigation .topnav .mainlinks li{ display:inline; list-style:none; padding-right:20px; float: left;}
-header .navigation .topnav .mainlinks li a{}
+
 header .navigation .topnav .mainlinks .profilepicsmall { width: 30px; height: 30px; margin: -6px auto 0px auto; border-radius: 200px; border: #efefef solid 2px; position: relative;}
 
 header .navigation .topnav .social{margin:0px; float:right; color:#333}
@@ -338,9 +338,6 @@ nav li:hover > ul{
 	display:block
 }
 
-nav li li:hover {
-	
-}
 
 nav li li {
     position:relative;
@@ -421,7 +418,6 @@ nav li li ul{
 
 .largered{font-size: 32px; color: #ec1261; font-weight: 300;}
 
-.thematicside{}
 .thematicside .coursebox{width: 100%; height: 162px; margin-bottom: 2em; position: relative; text-align: center; color: #fff;}
 .thematicside .coursebox .aboutcourse{position: absolute; bottom: 1em;  width: 100%; }
 
@@ -517,7 +513,7 @@ nav li li ul{
 .pinkbg{ background-color: #ffe0f5; padding: 30px 40px; position: absolute; width: 528px; z-index: 2; top: 4em;}
 .beakx .boximg{height: 389px;}
 
-.thematics{padding:3em 0px; background-color:#ffc10738;}
+.thematics{padding:3em 0px; background-color:#0073e312;}
 .inner .thematics{padding:0; background:none;}
 
 .breaker1{height: 500px; margin-bottom: 3em;}
@@ -559,8 +555,8 @@ transition: all 0.3s ease-in-out;}
 .themebox {height:200px; position:relative;margin-bottom: 30px;}
 .themebox:before{content:""; position:absolute; height:100%; width:100%; left:0px; top:0px; background-color:#021c3585;}
 .themebox .titlebox{position:absolute; width:100%; bottom:0px; text-align:center;}
-.themebox .titlebox h4{color:#fff; font-size: 22px;}
-.themebox .titlebox h4 span{font-size:17px;}
+.themebox .titlebox h4{color:#fff; font-size: 18px;}
+.themebox .titlebox h4 span{font-size:17px; font-weight: 700;}
 .yellow:before{content:""; position:absolute; height:100%; width:100%; left:0px; top:0px; background-color:#cece0cd4;}
 .orange:before{content:""; position:absolute; height:100%; width:100%; left:0px; top:0px; background-color:#ffa500cc;}
 .purple:before{content:""; position:absolute; height:100%; width:100%; left:0px; top:0px; background-color:#800080ad;}
@@ -577,6 +573,7 @@ transition: all 0.3s ease-in-out;}
 .sectionbox{display:none;}
 #secbx1{display:block;}
 
+.testbx{margin-top: -7em;}
 .questbox, .answ{float:left; width:100%;}
 .questbox{margin-bottom:10px;}
 
@@ -602,14 +599,13 @@ transition: all 0.3s ease-in-out;}
 .resources .largetext{font-size: 20px; color: #f37225;  font-weight: 300;}
 
 .contactForm{ margin: 0px auto;}
-.contactForm input, .contactForm textarea, .contactForm select{width:100%;  -webkit-border-radius: 4px; -moz-border-radius:4px; o-border-radius:4px; border-radius: 4px;  border:none; color:#000000; background:#fff; font-size:15px; border:1px solid #d5d5d6;}
-.contactForm textarea{ }
+.contactForm input, .contactForm textarea, .contactForm select{width:100%; border-radius: 4px;  border:none; color:#000000; background:#fff; font-size:15px; border:1px solid #d5d5d6;}
 .contactForm p{ margin-bottom:0px;}
 .contactForm input, .contactForm textarea, .contactForm select{ margin-bottom:20px; padding:10px;}
 .contactForm input[type="checkbox"]{width: 20px !important;}
 .contactForm input:focus, .contactForm textarea:focus, .contactForm input:hover, .contactForm textarea:hover{background:#f2f2f2;}
 .contactForm .submit{
-	-webkit-border-radius: 4px; -moz-border-radius:4px; o-border-radius:4px; border-radius: 4px;
+	 border-radius: 4px;
 -o-transition: all 0.3s ease-in-out;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
@@ -628,9 +624,9 @@ transition: all 0.3s ease-in-out;}
 .contactForm .submit:hover, .contactForm .submit:focus{background-color: #2e3191;}
 .disabledbtn{background-color:#ccc !important}
 
-footer{ padding: 0em 0px 0em 0px;  position: relative;  margin-top: 3em;}
+footer{ padding: 0em 0px 0em 0px;  position: relative;  margin-top: 1em;}
 footer .footmenu{margin:10px 0;}
-footer .footmenu li{list-style: none; display: inline; padding-left: 20px;  font-size: 16px; font-weight: 700;}
+footer .footmenu li{list-style: none; display: inline; padding-left: 20px;  font-size: 15px; font-weight: 400;}
 footer .footmenu ul{margin:0px; list-style:none;}
 footer .footmenu ul li{margin:0px; display:inline;}
 footer .footmenu ul li a{text-transform:uppercase;font-size:13px; padding: 5px 12px;}
@@ -641,9 +637,9 @@ footer .bottomlogo{width:150px; }
 footer .social{list-style:none; margin: 0px; margin-top:20px;}
 footer .social li{display:inline; margin: 0px 3px; font-size:20px;}
 
-footer .footlogo {width: 150px;}
+footer .footlogo {width: 185px;}
 footer .footlogo img{width: 131px;}
-footer .copy{font-size: 14px; font-weight: 700; margin-top: 20px;  margin-bottom: 1em;}
+footer .copy{font-size: 12px; font-weight: 400; margin-top: 20px;  margin-bottom: 3em;}
 
 .errorbox{display:none;}
 
