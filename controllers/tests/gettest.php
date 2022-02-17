@@ -21,9 +21,12 @@ function getQuestAns($thematic,$section,$userid,$usertype){
 		$questan .="<input type='hidden' id='lasttest' name='lastest' value='1' />";
 	}
 
+	
+	
 	while($row = $result->fetch_array()){
 		$questan .= "<div class='questbox'><b>". $row['question'] . "</b></div>";
-		
+
+
 		if($row['questiontype']=="radio"){
 			
 			$answers= explode("~" , $row['answers']);
@@ -40,11 +43,14 @@ function getQuestAns($thematic,$section,$userid,$usertype){
 			
 			$answers= explode("~", $row['answers']);
 			$keyid = $row['id'];
+
+			$questan .="<i style='font-size:12px;'>Select multiple</i> <br />";
 		
 			foreach ($answers as $value) {
 			//$displayQuestions[] = explode("|",$value);
 			//$letter = substr(trim($value),0,1);
-			$questan .= "<div class='answ'><label><input style='float:left' type='checkbox' name='".$keyid."' value='".$value."'> ".$value."</label></div>";
+			
+			$questan .= "<br /><div class='answ'><label><input style='float:left' type='checkbox' name='".$keyid."' value='".$value."'> ".$value."</label></div>";
 			}	
 		}
 		

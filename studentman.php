@@ -1,3 +1,4 @@
+<?php header('Content-type: text/html; charset=utf-8'); ?>
 <?php include 'components/session-check-mentor.php' ?>
 
 <!DOCTYPE html>

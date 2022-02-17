@@ -43,6 +43,27 @@
 							<div class="successmsg">Change was successful</div>
 							<div class="row">
 								<input type="hidden" name="recordid" value="<?php echo $rowtest['id']; ?>" />
+								<div class="col-md-7"><b><label>Section: 
+							
+								<?php
+									
+									$sqlrow="SELECT * FROM " .$prefix. "course WHERE course_id = ".$rowtest['thematicnum'];
+
+									$result =  $conn->query($sqlrow);
+									$row = $result->fetch_array();
+									
+									$coursetext= explode("||", $row['course_brief']);
+									$coursetext= array_filter($coursetext);
+									
+									$texttitle= explode("/~",$coursetext[$rowtest['question_part']]);
+									$texttitle= array_filter($texttitle);
+
+
+									print_r($texttitle[1]);
+	
+								?>
+								</label></b>
+							</div>
 								<div class="col-md-7"><label>Question</label><br /><input type="text" name="questionx" value="<?php echo $rowtest['question']; ?>" required /></div>
 								<div class="col-md-5"><label>Question Type</label>
 									<select name="questtype">

@@ -42,7 +42,7 @@
 				<nav id="cssmenu">
 					<ul>
 						<li><a href="index.php">Home</a></li>
-						<li><a href="sessions.php">sessions</a></li>
+						<li><a href="sessions.php">Units</a></li>
 						<li><a href="#">FAQs</a></li>
 					</ul>
 				</nav>

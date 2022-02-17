@@ -573,7 +573,7 @@ transition: all 0.3s ease-in-out;}
 .sectionbox{display:none;}
 #secbx1{display:block;}
 
-.testbx{margin-top: -7em;}
+.testbx{margin-top: 0em;}
 .questbox, .answ{float:left; width:100%;}
 .questbox{margin-bottom:10px;}
 
@@ -616,6 +616,7 @@ transition: all 0.3s ease-in-out;}
     font-size: 15px;
 	width: auto;
 	border:none;
+  margin-top: 30px;
 }
 .contactForm label{font-size:13px;float: left;padding: 0;cursor: pointer;text-decoration: none;text-align: left;background:none;margin-bottom: 0px;}
 .contactForm input{ margin-bottom:20px;}
