@@ -7,7 +7,7 @@
         session_start(); 
     } 
 	
-	if($_SESSION['userid']==""){
+	if(empty($_SESSION['userid'])){
         header("location:login.php?session=notset");
     }
 	
