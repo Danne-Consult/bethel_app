@@ -9,13 +9,13 @@ $result =  $conn->query($sql) or die(mysqli_error($conn));
 $row = $result->fetch_array();
 
 
-
-if(trim($questval) !== $row['correct_ans']){
-	
-	$boxcont = "<i><b>Correct answer:</b> ". $row['correct_ans'] ." </i><br />";
-}
-if($row['comments'] !==""){
-	$boxcont .="<p><i>". $row['comments'] ."</i></p>";
+if (!empty($row['correct_ans'])){
+	if(trim($questval) !== $row['correct_ans']){
+		$boxcont = "<i><b>Right answer:</b> ". $row['correct_ans'] ." </i><br />";
+	}
+	if($row['comments'] !==""){
+		$boxcont .="<p><i>". $row['comments'] ."</i></p>";
+	}
 }
 
 $return_arr[] = array('questid'=>$questid,'anscont'=>$boxcont,'answer'=>trim($questval),'corrans'=>$row['correct_ans'],'status'=>'success');
