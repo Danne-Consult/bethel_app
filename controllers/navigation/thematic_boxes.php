@@ -10,7 +10,7 @@ $rowy = $resulty->fetch_assoc();
 <div class="container12 beakx thematics">
 		<article>
 		<h3 class="aligncenter">Sessions</h3>
-			<div class="row justify-content-center">
+			<div class="row justify-content-center slidex">
 			<?php 
 				if($resultx->num_rows == 0){
 						echo "<div class='col-md-12'><p>No thematics added!</p></div>";

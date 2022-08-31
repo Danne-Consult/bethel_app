@@ -14,12 +14,12 @@ function getQuestAns($thematic,$section,$userid,$usertype){
 		$resultsec =  $conn->query($sqlsec) or die(mysqli_error($conn));
 		$rowsec = $resultsec->fetch_array();
 	
-	$questan = "<div class='testbx'><form class='contactForm' id='quizform'><input type='hidden' id='themno' name='themeno' value='".$thematic."' /><input type='hidden' id='secno' name='section' value='".$section."' />
-	<input type='hidden' id='usertype' name='usertype' value='".$usertype."' /><input type='hidden' id='userid' name='userid' value='".$userid."' />";
-	
-	if($thematic == $rowsec['thematicnum'] && $section==$rowsec['question_part']){
-		$questan .="<input type='hidden' id='lasttest' name='lastest' value='1' />";
-	}
+		$questan = "<div class='testbx'><form class='contactForm' id='quizform'><input type='hidden' id='themno' name='themeno' value='".$thematic."' /><input type='hidden' id='secno' name='section' value='".$section."' />
+		<input type='hidden' id='usertype' name='usertype' value='".$usertype."' /><input type='hidden' id='userid' name='userid' value='".$userid."' />";
+		
+		if($thematic == $rowsec['thematicnum'] && $section==$rowsec['question_part']){
+			$questan .="<input type='hidden' id='lasttest' name='lastest' value='1' />";
+		}
 
 	
 	

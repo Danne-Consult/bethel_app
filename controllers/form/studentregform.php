@@ -1,18 +1,18 @@
 <form class="contactForm" action="components/register.php" method="post" name="login" >
 	<input type="hidden" name="formtype" value="<?php echo $formtype; ?>" />
 	<div class="row">
-		<div class="col-md-6">
-			<label for="namex">Name</label>
-			<input type="text" name="namex" placeholder="name" required />
-		</div>
-		<div class="col-md-6">
-			<label for="emailx">Email</label>
-			<input type="email" name="emailx" placeholder="Email" required />
+		<div class="col-md-12">
+			<label for="namex">Your full name</label>
+			<input type="text" name="namex" required />
 		</div>
 	</div>
 	
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-6">
+			<label for="emailx">Email</label>
+			<input type="email" name="emailx" required />
+		</div>
+		<div class="col-md-6">
 			<label for="genderx">Gender</label>
 			<select name="genderx">
 				<option>...</option>
@@ -21,11 +21,11 @@
 				<option value="Other">other</option>
 			</select>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-6">
 			<label for="datebirthx">Date of birth</label>
-			<input type="text" id="datepick" name="datebirthx" placeholder="Date of birth: YYYY-MM-DD"  required />
+			<input type="date" name="datebirthx"  required />
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-6">
 		<label for="countyx">From which County</label>
 		<select name="countyx">
 			<option>Select County</option>
@@ -82,13 +82,11 @@
 	</div>
 	<hr />
 	<div class="row ">
-		<div class="col-md-12 ">
-			<p>Are you in school?<br /> <label style="float:none;"><input type="radio" value="Yes" name="inschoolx" /> Yes </label>&nbsp;&nbsp;&nbsp;&nbsp;<label style="float:none;"><input type="radio" value="No" name="inschoolx" />No </label>
+		<div class="col-md-12">
+			<p><b>Are you in school?</b></p> <label style="float:none;"><input type="radio" value="Yes" name="inschoolx" /> Yes </label>&nbsp;&nbsp;&nbsp;&nbsp;<label style="float:none;"><input type="radio" value="No" name="inschoolx" />No </label>
 		</div>
-	</div>
-	
-	<div class="row ">
-		<div class="col-md-6 ">
+		<br />
+		<div class="col-md-12 ">
 			<label for="edulevel">If yes, what level are you in?</label>
 			<select name="edulevel">
 				<option>...</option>
@@ -98,25 +96,25 @@
 				<option value="Other">Other</option>
 			</select>
 		</div>
-		
 	</div>
+	<hr />
 	<div class="row ">
-		<div class="col-md-6 ">
-			<p>What is the name of the school you are attending?<br /> <input type="text" id="schoolname" name="schoolname" placeholder="School/Institution name" >
+		<div class="col-md-12">
+			<p><b>Name of the school/institution you are attending?</b></p><input type="text" id="schoolname" name="schoolname" placeholder="School/Institution name" >
 			<div id="schoollist"></div>
 		</div>
-		<div class="col-md-6 ">
-			<p>Location of the school/institution<br /> <input type="text" name="schoolloc" placeholder="School/Institution location" >
+		<div class="col-md-12 ">
+			<p><b>Location of the school/institution</b></p><input type="text" name="schoolloc" placeholder="School/Institution location" >
 		</div>
 	</div>
 	<hr />
 	<div class="row ">
 		<div class="col-md-12">
-			<p>Have you attended any Menstrual Hygiene Management and life skill program</p> <label style="float:none;"><input type="radio" value="Yes" name="progprev" /> Yes </label>&nbsp;&nbsp;&nbsp;&nbsp;<label style="float:none;"><input type="radio" value="No" name="progprev" />No </label>
+			<p><b>Have you attended any Menstrual Hygiene Management and life skill program</b></p> 
+			<label style="float:none;"><input type="radio" value="Yes" name="progprev" /> Yes </label>&nbsp;&nbsp;&nbsp;&nbsp;<label style="float:none;"><input type="radio" value="No" name="progprev" />No </label>
 		</div>
-		
-		<div class="col-md-6">
-			if yes, by which organization: <br />
+		<div class="col-md-12">
+			<label for="progby">If "Yes", by which organization</label><br />
 			<select name="progby" required>
 				<option>...</option>
 				<option name="Peers/Friends">AKGIS</option>
@@ -126,17 +124,13 @@
 	</div>
 	<div class="row ">
 		<div class="col-md-12">
-			<p>If other, tell us about the program<br /> <textarea name="yesprogprev"></textarea>
+			<label label for="yesprogprev">If other, tell us about the program</label><br /> <textarea name="yesprogprev"></textarea>
 		</div>
 	</div>
 	<hr />
 	<div class="row ">
 		<div class="col-md-12">
-			<p>How did you get to know about this program</p>
-		</div>
-	</div>
-	<div class="row ">
-		<div class="col-md-6">
+			<label for="howdidyou">How did you get to know about this program?</label><br />
 			<select name="howdidyou">
 				<option>...</option>
 				<option name="Peers/Friends">Peers/Friends</option>
@@ -152,20 +146,46 @@
 	<hr />
 	
 	<div class="row justify-content-center">
-		<div class="col-md-6 aligncenter">
-			<label for="datebirthx">Password</label>
-			<input type="password" name="passwordx" placeholder="Enter Password" required />
+		<div class="col-md-12 ">
+			<label for="datebirthx">Enter password</label>
+			<input type="password" name="passwordx" id="passx" required /><i class="fa-solid fa-eye" id="togglePassword"></i>
 		</div>
-		<div class="col-md-6 aligncenter">
-			<label for="datebirthx">Confirm Password</label>
-			<input type="password" name="repasswordx" placeholder="Re-enter Password" required />
+		<div class="col-md-12 ">
+			<label for="datebirthx">Confirm password</label>
+			<input type="password" name="repasswordx" id="repassx" required /><i class="fa-solid fa-eye" id="togglePassword1"></i>
 		</div>
-	</div>
-	
-	<div class="row justify-content-center">
-		<div class="col-md-6 aligncenter">
+		<div class="col-md-12 alignright">
 			<p>&nbsp;</p>
-			<button type="submit" name="regperson" class="submit">Register</button>
+			<a href="login.php">Back to login</a> &nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="regperson" class="submit">Register</button>
 		</div>
 	</div>
 </form>
+
+<script>
+	const togglePassword = document.querySelector("#togglePassword");
+	const password = document.querySelector("#passx");
+
+	const togglePassword1 = document.querySelector("#togglePassword1");
+	const password1 = document.querySelector("#repassx");
+
+	togglePassword.addEventListener("click", function () {
+
+		console.log(password);
+		// toggle the type attribute
+		const type = password.getAttribute("type") === "password" ? "text" : "password";
+		password.setAttribute("type", type);
+
+		// toggle the icon
+		this.classList.toggle("fa-eye-slash");
+	});
+
+	togglePassword1.addEventListener("click", function () {
+		// toggle the type attribute
+		const type = password1.getAttribute("type") === "password" ? "text" : "password";
+		password1.setAttribute("type", type);
+
+		// toggle the icon
+		this.classList.toggle("fa-eye-slash");
+	});
+	
+</script>
