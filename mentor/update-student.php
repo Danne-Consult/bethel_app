@@ -1,5 +1,13 @@
 <?php require '../manager/config/_database/database.php'; ?>
 
+<?php
+	session_start();
+	$studentid = $_GET["user"];
+	$sql1="SELECT * FROM ".$prefix."user WHERE usercode='$studentid'";
+	$result1 =  $conn->query($sql1);
+	$rws1 = $result1->fetch_array();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +28,7 @@
 
 	<div class="container12">
 		<article>
-			<h4>Add New Student</h4>
+			<h4>Update Student</h4>
 			<?php
 				if(isset($_GET['error'])){
 					echo "<div class='error-red'>". $_GET['error'] ."</div>";
@@ -29,12 +37,12 @@
 					echo "<div class='success-green'>". $_GET['success'] ."</div>";
 				}
 			?>
-			<form class="contactForm" action="components/register.php" method="post" name="login" >
-	<input type="hidden" name="formtype" value="<?php echo $formtype; ?>" />
+			<form class="contactForm" action="components/updateuser.php" method="POST" name="login" >
+	<input type="hidden" name="usercode" value="<?php echo $rws1['usercode']; ?>" />
 	<div class="row">
 		<div class="col-md-6">
 			<label for="namex">Student Name</label>
-			<input type="text" name="namex" placeholder="name" required />
+			<input type="text" name="namex" placeholder="name" value="<?php echo $rws1['username']; ?>" required />
 		</div>
 		
 	</div>
@@ -43,6 +51,7 @@
 		<div class="col-md-4">
 			<label for="genderx">Gender</label>
 			<select name="genderx">
+				<option value="<?php echo $rws1['gender']; ?>" selected><?php echo $rws1['gender']; ?></option>
 				<option>...</option>
 				<option value="Female">Female</option>
 				<option value="Male">Male</option>
@@ -51,11 +60,13 @@
 		</div>
 		<div class="col-md-4">
 			<label for="datebirthx">Date of birth</label>
-			<input type="date" id="datepick" name="datebirthx" required />
+			<input type="date" name="datebirthx" value="<?php echo $rws1['dateofbirth']; ?>" required />
 		</div>
 		<div class="col-md-4">
 		<label for="countyx">From which County</label>
 		<select name="countyx">
+			<option value="<?php echo $rws1['county']; ?>"><?php echo $rws1['county']; ?></option>
+			<option>...</option>
 			<option>Select County</option>
 			<option value="Baringo">Baringo</option>
 			<option value="Bomet">Bomet</option>
@@ -111,7 +122,17 @@
 	<hr />
 	<div class="row ">
 		<div class="col-md-12 ">
-			<p>Is the student in school?<br /> <label style="float:none;"><input type="radio" value="Yes" name="inschoolx" /> Yes </label>&nbsp;&nbsp;&nbsp;&nbsp;<label style="float:none;"><input type="radio" value="No" name="inschoolx" />No </label>
+			<p>Is the student in school?<br /> <label style="float:none;">
+			<?php 
+				$inschool="";
+				if($rws1['inschool'] == "Yes"){
+					$inschool= '<input type="radio" value="Yes" name="inschoolx" checked /> Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;<label style="float:none;"><input type="radio" value="No" name="inschoolx" />No </label>';
+				}
+				if($rws1['inschool'] == "No"){
+					$inschool= '<input type="radio" value="Yes" name="inschoolx"  /> Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;<label style="float:none;"><input type="radio" value="No" name="inschoolx" checked />No </label>';
+				}
+				echo $inschool;
+			?>
 		</div>
 	</div>
 	
@@ -119,6 +140,7 @@
 		<div class="col-md-6 ">
 			<p>If yes, what level?</p>
 			<select name="edulevel">
+				<option value="<?php echo $rws1['schoollevel']; ?>"><?php echo $rws1['schoollevel']; ?></option>
 				<option>...</option>
 				<option value="Primary School">Primary School</option>
 				<option value="High School">High School</option>
@@ -132,6 +154,7 @@
 		<div class="col-md-6 ">
 			<p>What is the name of the school you are attending?</p>
 			<select name="schoolname">
+				<option value="<?php echo $rws1['schoolname']; ?>"><?php echo $rws1['schoolname']; ?></option>
 				<option>...</option>
 			<?php 
 				$sqlschool="SELECT * FROM ".$prefix."schools ORDER BY schoolname ASC";
@@ -147,12 +170,24 @@
 	<hr />
 	<div class="row ">
 		<div class="col-md-12">
-			<p>Has the student attended any Menstrual Hygiene Management and life skill program</p> <label style="float:none;"><input type="radio" value="Yes" name="progprev" /> Yes </label>&nbsp;&nbsp;&nbsp;&nbsp;<label style="float:none;"><input type="radio" value="No" name="progprev" />No </label>
+			<p>Has the student attended any Menstrual Hygiene Management and life skill program</p> 
+			
+			<?php 
+				$mhm="";
+				if($rws1['progprev'] == "Yes"){
+					$mhm= '<label style="float:none;"><input type="radio" value="Yes" name="progprev" checked /> Yes </label>&nbsp;&nbsp;&nbsp;&nbsp;<label style="float:none;"><input type="radio" value="No" name="progprev" />No </label>';
+				}
+				if($rws1['progprev'] == "No"){
+					$mhm= '<label style="float:none;"><input type="radio" value="Yes" name="progprev" /> Yes </label>&nbsp;&nbsp;&nbsp;&nbsp;<label style="float:none;"><input type="radio" value="No" name="progprev" checked />No </label>';
+				}
+				echo $mhm;
+			?>
 		</div>
 		
 		<div class="col-md-6">
 			if yes, by which organization: <br />
 			<select name="progby" required>
+				<option value="<?php echo $rws1['progby']; ?>"><?php echo $rws1['progby']; ?></option>
 				<option>...</option>
 				<option name="Peers/Friends">AKGIS</option>
 				<option name="Google search">Other</option>
@@ -161,7 +196,7 @@
 	</div>
 	<div class="row ">
 		<div class="col-md-12">
-			<p>If other, tell us about the program<br /> <textarea name="yesprogprev"></textarea>
+			<p>If other, tell us about the program<br /> <textarea name="yesprogprev"><?php echo $rws1['yesprogprev']; ?></textarea>
 		</div>
 	</div>
 	<hr />
@@ -169,25 +204,23 @@
 	
 	<div class="row">
 		<div class="col-md-6">
-			<label for="emailx">Email <i>*optional- Add if student will log in on their own</i></label>
-			<input type="email" name="emailx" placeholder="Email" />
+			<label for="emailx">Email <i>*optional</i></label>
+			<input type="email" name="emailx" placeholder="Email" value="<?php echo $rws1['email']; ?>" />
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-6">
 			<label for="datebirthx">Password</label>
-			<input type="password" name="passwordx" placeholder="Enter Password"  />
+			<input type="password" name="passwordx" placeholder="Enter Password" />
 		</div>
 		<div class="col-md-6">
 			<label for="datebirthx">Confirm Password</label>
-			<input type="password" name="repasswordx" placeholder="Re-enter Password"  />
+			<input type="password" name="repasswordx" placeholder="Re-enter Password" />
 		</div>
 	</div>
-	
 	<div class="row ">
 		<div class="col-md-6">
-			<p>&nbsp;</p>
-			<button type="submit" name="regstudent" class="submit">Register</button>
+			<button type="submit" name="updatestudent" class="submit">Update Student</button>
 		</div>
 	</div>
 </form>

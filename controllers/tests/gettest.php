@@ -35,7 +35,7 @@ function getQuestAns($thematic,$section,$userid,$usertype){
 			foreach ($answers as $value) {
 			//$displayQuestions[] = explode("|",$value);
 			//$letter = substr(trim($value),0,1);
-			$questan .= "<div class='answ'><label><input class='getans' style='float:left' type='radio' name='".$keyid."' value='".$value."'> ".$value."</label></div>";
+			$questan .= "<div class='answ'><label><input class='getans' type='radio' name='".$keyid."' value='".$value."'> ".$value."</label></div>";
 			}	
 		}
 		

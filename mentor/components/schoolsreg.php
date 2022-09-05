@@ -1,11 +1,9 @@
 <?php
-   ob_start();
     session_start();
-    session_regenerate_id();
-	$new_sessionid = session_id();
-	require '../../manager/config/_database/database.php';
 	
-	if($_SERVER["REQUEST_METHOD"] == "POST") {
+	if(isset($_POST['regschool'])) {
+
+		require '../../manager/config/_database/database.php';
 		$schoolnamex = mysqli_real_escape_string($conn,$_POST['schoolnamex']);
 		
 		$registrarid= $_SESSION['userid'];
@@ -15,11 +13,12 @@
 		$rws1 =  $result1->fetch_array();
 		
 		$sql="INSERT INTO ".$prefix."schools(schoolname, enterby) VALUES ('$schoolnamex','$rws1[0]')";
-		$conn->query($sql);
 				
-		header("location: ../schools.php?status=success");
-	}else{
-		header("location: ../schools.php?error=unable to register school. Contact the administrator");
+		if($conn->query($sql)){	
+			header("location: ../schools.php?success=School added!");
+		}else{
+			header("location: ../schools.php?error=Unable to add school. Contact the administrator");
+		}
 	}
 	
 ?>

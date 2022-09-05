@@ -1,4 +1,9 @@
-<?php require '../manager/config/_database/database.php'; ?>
+<?php require '../manager/config/_database/database.php'; 
+	$schooid = $_GET["schoolid"];
+	$sql1="SELECT * FROM ".$prefix."schools WHERE id='$schooid'";
+	$result =  $conn->query($sql1);
+	$rws = $result->fetch_array();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +25,7 @@
 
 	<div class="container12">
 		<article>
-			<h4>Add School</h4>
+			<h4>Update School</h4>
 			<?php
 				if(isset($_GET['error'])){
 					echo "<div class='error-red'>". $_GET['error'] ."</div>";
@@ -29,12 +34,13 @@
 					echo "<div class='success-green'>". $_GET['success'] ."</div>";
 				}
 			?>
-			<form class="contactForm" action="components/schoolsreg.php" method="post" name="login" >
+			<form class="contactForm" action="components/updateschool.php" method="post" name="login" >
 	
 			<div class="row">
 				<div class="col-md-6">
 					<label for="namex">School Name</label>
-					<input type="text" name="schoolnamex" placeholder="name" required />
+					<input type="hidden" name="schoolid" value="<?php echo $rws['id']; ?>" />
+					<input type="text" name="schoolnamex" placeholder="name" value="<?php echo $rws['schoolname']; ?>" required />
 				</div>
 				
 			</div>
@@ -44,7 +50,7 @@
 			<div class="row">
 				<div class="col-md-6 ">
 					<p>&nbsp;</p>
-					<button type="submit" name="regschool" class="submit">Add School</button>
+					<button type="submit" name="updateschool" class="submit">Update School</button>
 				</div>
 			</div>
 		</form>

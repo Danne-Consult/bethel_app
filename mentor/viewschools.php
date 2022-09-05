@@ -1,9 +1,5 @@
 <?php 
- ob_start();
-    session_start();
-    session_regenerate_id();
-	$new_sessionid = session_id();
-	
+ 	session_start();
 	require '../manager/config/_database/database.php'; 
 	
 	$registrarid= $_SESSION['userid'];		
@@ -18,10 +14,10 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
 
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../assets/css/bootstrap.css">
 	<link rel="stylesheet" href="../assets/css/font-awesome.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+	<link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 	<link rel="stylesheet" href="../assets/css/flexslider.css">
 	<link rel="stylesheet" href="../assets/css/menuscript.css">
 	<link rel="stylesheet" href="../assets/css/style.css">
@@ -34,6 +30,14 @@
 	<div class="container12">
 		<article>
 			<h3>View Schools</h3>
+			<?php
+				if(isset($_GET['error'])){
+					echo "<div class='error-red'>". $_GET['error'] ."</div>";
+				}
+				if(isset($_GET['success'])){
+					echo "<div class='success-green'>". $_GET['success'] ."</div>";
+				}
+			?>
 			<div class="row">
 				<div class="col-md-12">
 					<?php 
@@ -56,7 +60,7 @@
 							while($rowx = $resultx->fetch_array()){
 							echo "<tr>
 									<td>".$rowx['schoolname']."</td>
-									<td><a title='Update' href='update-user.php?user=".$rowx['id']."'><i class='fa fa-edit' aria-hidden='true'></i></a> &nbsp;&nbsp;&nbsp;&nbsp;<a class='delete' title='Delete' href='components/deleteuser.php?user=".$rowx['id']."'><i class='fa fa-trash' aria-hidden='true'></i></a></td>
+									<td><a title='Update' href='update-school.php?schoolid=".$rowx['id']."'><i class='fa fa-edit' aria-hidden='true'></i></a> &nbsp;&nbsp;&nbsp;&nbsp;<a class='delete' title='Delete' href='components/delete-school.php?schoolid=".$rowx['id']."'><i class='fa fa-trash' aria-hidden='true'></i></a></td>
 									</tr>";
 							};
 							
@@ -80,13 +84,6 @@
 			
 			$(".delete").click(function(){
 				return confirm("Are you sure you want to delete this record?");	
-			});
-			
-			$('#morefield').click(function(){
-				$('.testcont').append('<div class="qanda"><div class="quest"><label>Question</label><br /><textarea name="question[]"></textarea></div><div class="ans"><label>Answer</label><br /><input type="text" name="answer[]" /></div><div class="del"><i id="deletefield" class="fa fa-trash" aria-hidden="true"></i></div></div>');
-			});
-			$(document).on('click','#deletefield', function(){
-				$(this).closest(".qanda").remove();
 			});
         })
 	 </script>

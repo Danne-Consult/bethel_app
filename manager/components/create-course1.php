@@ -22,7 +22,7 @@
 		
 		$numques = count($sectitle);
 		for($i=0;$i<$numques;$i++){
-			 if($sectitle[$i]!="" && $seccontent[$i]!=""){
+			 if($sectitle[$i]!=""){
 				$sec = $sectitle[$i];
 				$cont = $seccontent[$i];
 			 }
