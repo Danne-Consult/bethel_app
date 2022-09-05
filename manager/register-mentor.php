@@ -9,7 +9,7 @@
 			<div class="row">
 				<div class="col-md-8">
 					<h3>Add New Mentor</h3>
-					<form class="contactForm" action="components/register-mentor.php" method="post" name="login" >
+					<form class="contactForm" action="components/register-mentor.php" method="POST" name="login" >
 					<input type="hidden" name="formtype" value="ment" />
 						<div class="row">
 							<div class="col-md-6">
@@ -100,7 +100,7 @@
 						<hr />
 						<div class="row ">
 							<div class="col-md-12 ">
-								<p>Institution/Schools Representing - Use a comma ( , ) to split the names of the institutions/Schools<br /> <textarea name="schoolnames" required></textarea>
+								<p>Institution/Schools Representing - Use a comma ( , ) to split the names of the institutions/Schools<br /> <textarea name="schoolnames"></textarea>
 							</div>
 							
 						</div>
