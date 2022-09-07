@@ -1,6 +1,8 @@
 <?php
-    session_start();
+    
     if($_SERVER["REQUEST_METHOD"] == "POST") {
+		session_start();
+
 		 if(isset($_POST['login_btn'])) {
 			require '../manager/config/_database/database.php';
 			date_default_timezone_set("Africa/Nairobi");
@@ -26,7 +28,6 @@
 			$password= base64_encode(hash('sha256',$password));
 			
 			$sql="SELECT * FROM (SELECT user_type, password, username, email, usercode FROM ".$prefix."user UNION SELECT user_type, password,username,email, usercode FROM ".$prefix."mentor) AS u WHERE u.email='$username' AND u.password='$password'";
-			
 			
 			$result =  $conn->query($sql);
 			$trws = mysqli_num_rows($result);
@@ -62,6 +63,7 @@
         }
 		$conn->close();
     }else{
-		 //header("location: ../login.php?error=try again");
-	}}
+		 header("location: ../login.php?error=try again");
+	}
+}
 ?>

@@ -36,7 +36,7 @@
 			exit();
 			
 		}else{
-			$sql2="INSERT INTO ".$prefix."user (username,email,password,gender,dateofbirth,county,inschool,schoollevel,usercode) VALUES ('$namex','$emailx','$userpassword','$genderx','$datebirthx','$countyx','$inschoolx','$edulevel','$randstr' )";
+			$sql2="INSERT INTO ".$prefix."user (username,email,password,gender,dateofbirth,county,inschool,schoollevel,usercode, user_type) VALUES ('$namex','$emailx','$userpassword','$genderx','$datebirthx','$countyx','$inschoolx','$edulevel','$randstr', 'stud' )";
 			
 			$conn->query($sql2) or die(mysqli_error($conn));
 			
