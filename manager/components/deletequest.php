@@ -9,8 +9,8 @@
 		$sql1 = "DELETE FROM ".$prefix."questions WHERE id = '$rec'";
 		$conn->query($sql1);
 		$conn->close();
-		header("location: ../update-test.php?t=".$course."&status=success");
+		header("location: ../update-test.php?t=".$course."&success=success");
     }else{
-		header("location: ../update-test.php?t=".$course."&status=error");
+		header("location: ../update-test.php?t=".$course."&error=Could not delete the record");
 	}
 ?>

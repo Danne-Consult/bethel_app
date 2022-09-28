@@ -2,12 +2,12 @@
 
 	include '../config/_database/database.php';
 	
-	$recordid = $_POST["recordid"];
-	$question = $_POST["questionx"];
-	$questtype = $_POST["questtype"];
-	$answers = $_POST["answersx"];
-	$corrans = $_POST["correctans"];
-	$comment = $_POST["commentx"];
+	$recordid = mysqli_real_escape_string($conn,$_POST["recordid"]);
+	$question = mysqli_real_escape_string($conn,$_POST["questionx"]);
+	$questtype = mysqli_real_escape_string($conn,$_POST["questtype"]);
+	$answers = mysqli_real_escape_string($conn,$_POST["answersx"]);
+	$corrans = mysqli_real_escape_string($conn,$_POST["correctans"]);
+	$comment = mysqli_real_escape_string($conn,$_POST["commentx"]);
 	
 	$sql = "UPDATE ".$prefix."questions SET question = '$question', questiontype='$questtype', answers='$answers', correct_ans='$corrans', comments='$comment' WHERE id='$recordid'";
 	

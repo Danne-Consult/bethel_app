@@ -31,11 +31,11 @@
 		$conn->query($sql2) or die(mysqli_error($conn));
 		
 		$allowTypes = array('jpg','png','jpeg','gif','pdf','doc','docx');
-		$allowimageTypes = array('jpg','png','jpeg','gif');
+		$allowimageTypes = array('JPG','jpg','png','jpeg','gif');
 		$allowvideoTypes = array('mp4','wmv','flv');
 		
 		if(!$_FILES['bannerimage'] == ""){
-			$filename2 = $_FILES['bannerimage']['name'];
+			$filename2 = str_replace(" ","_",$_FILES['bannerimage']['name']);
 			$targetFilePath2 = "../assets/uploads/". $filename2;
 			$fileType2 = pathinfo($targetFilePath2,PATHINFO_EXTENSION);
 			

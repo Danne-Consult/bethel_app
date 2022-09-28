@@ -31,7 +31,7 @@
 		
 		if(!$_FILES['coursefiles'] == ""){
 		 for($i=0;$i<$countfiles;$i++){
-			$filename = $_FILES['coursefiles']['name'][$i];
+			$filename = str_replace(" ","_",$_FILES['coursefiles']['name'][$i]);
 			$targetFilePath = "../assets/uploads/". $filename;
 			$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
 			
@@ -47,7 +47,7 @@
 		}
 		 
 		if(!$_FILES['bannerimage'] == ""){
-			$filename2 = $_FILES['bannerimage']['name'];
+			$filename2 = str_replace(" ","_",$_FILES['bannerimage']['name']);
 			$targetFilePath2 = "../assets/uploads/". $filename2;
 			$fileType2 = pathinfo($targetFilePath2,PATHINFO_EXTENSION);
 			
@@ -63,7 +63,7 @@
 		
 		if(!$_FILES['coursevideo'] == ""){
 
-			$filename3 = $_FILES['coursevideo']['name'];
+			$filename3 = str_replace(" ","_",$_FILES['coursevideo']['name']);
 			$targetFilePath3 = "../assets/uploads/". $filename3;
 			
 			$fileType3 = pathinfo($targetFilePath3,PATHINFO_EXTENSION);

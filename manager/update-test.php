@@ -2,6 +2,8 @@
 <?php include 'controllers/base/head.php' ?>
 
 
+
+
 <body class="inner">
 <div class="pagecont">
 	<?php include 'controllers/navigation/innernav.php' ?>
@@ -35,7 +37,26 @@
 					</div>
 					
 					<div class="row">
-						<?php 
+					<?php
+						/*if(isset($_GET['updatetest'])){
+							$questid = $_GET['recordid'];
+							$question= $_GET['questionx'];
+							$questiontype = $_GET['questtype'];
+							$answers = $_GET['answersx'];
+							$correctans = $_GET['correctans'];
+							$comments = $_GET['commentx'];
+
+							$sqlup = "UPDATE ".$prefix."questions SET question = '$question', questiontype= '$questiontype' answers='$answers', correct_ans = '$correctans'  comments = '$comments' WHERE id='$questid'";
+
+							if($conn->query($sqltests)){
+								echo "<div class='success-green'>Change made successfully</div>";
+							}else{
+								die(mysqli_error($conn));
+								echo "<div class='error-red'>There was an error making the change. please try agein</div>";
+							}
+
+						}*/
+
 						
 						while($rowtest = $resulttest->fetch_array()){ ?>
 							<div class="col-md-12">
@@ -83,7 +104,7 @@
 							<div class="row">
 								<div class="col-md-12"><label>Comments</label><textarea name="commentx"><?php echo $rowtest['comments']; ?></textarea></div>
 								
-								<div class="col-md-12"><br /><button type="submit" class="submit">Save</button> &nbsp; <a onclick='confirm("Are you sure you want to delete this question?")' href="components/deletequest.php?course=<?php echo $courseid;?>&rec=<?php echo $rowtest['id']; ?>">Delete</a></div>
+								<div class="col-md-12"><br /><button type="submit" name="updatetest" class="submit">Save</button> &nbsp; <a onclick='confirm("Are you sure you want to delete this question?")' href="components/deletequest.php?course=<?php echo $courseid;?>&rec=<?php echo $rowtest['id']; ?>">Delete</a></div>
 							</div>
 							</form>
 							
@@ -126,6 +147,7 @@
 			$str = $(this).closest("form").serialize();
 			console.log($str);
 			$formx = $(this).closest("form").find('.successmsg');
+			console.log($str);
 
 				$.ajax({  
 					type: "POST",  
