@@ -43,7 +43,6 @@ if(isset($_SESSION['usercode'])){
 			<button type="submit" name="login_btn" class="submit" >Login</button><br /></br >
 			<a href="register.php?fmt=stud">Don't have an account?</a>
 		</form>
-		<?php include "includes/footer.inc"; ?>
 	</div>
 	</div>
 	<div class="slogan">

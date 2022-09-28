@@ -96,7 +96,7 @@ $resulty = $conn->query($sqly) or die(mysqli_error($conn));
 							<div class="col-md-4 fieldtitle">Banner Image</div><div class="col-md-8"><input id="banimg" type="file" name="bannerimage" data-style="zoom-in"  /></br /><div class="imgpreview" style="background:url(assets/uploads/<?php echo $rowy['course_banner']?>) no-repeat center"></div>
 							
 							<div><p>Current banner</p>
-								<img src="../assets/images/<?php echo $rowy['course_banner']?>" style="width:70%;" />
+								<img src="assets/uploads/<?php echo $rowy['course_banner']?>" style="width:70%;" />
 							</div>
 							</div>
 							
