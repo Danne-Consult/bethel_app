@@ -33,10 +33,13 @@
   });	
   
   	$(".sidelink").click(function(){	
+		event.preventDefault();
 		var boxdiv = $(this).attr('boxshow');
 		$('.sectionbox').hide();
 		$("#"+ boxdiv).show();
-		event.preventDefault();
+		$('.correctans').empty()
+
+		$('html, body').animate({ scrollTop: $('#pagecont').offset().top - 20 }, 'slow');	
 	});
 	
 	$(document).on('click', '#nextsec', function(){
@@ -45,6 +48,8 @@
 		$('.sectionbox').hide();
 		$("#"+ boxdiv).show();
 		$('.correctans').empty();
+
+		$('html, body').animate({ scrollTop: $('#pagecont').offset().top - 20 }, 'slow');
 	
 	});
 	
@@ -52,7 +57,6 @@
 	$("form .submit").click(function(){
 		event.preventDefault();
 		$str = $(this).closest("form").serialize();
-		console.log($str);
 
 		$.ajax({  
 			type: "POST",  
@@ -60,7 +64,6 @@
 			data: $str,  
 			dataType: "json",
 			success: function(data) {  
-					console.log(data);
 					var secnext = parseInt(data[0]['secno']) + 1;
 					var lasttest = data[0]['lasttest'];
 					var divbox= "#nextbox-"+ data[0]['secno'];
@@ -68,12 +71,13 @@
 					var correctans = data[0]['wrongans'];
 					
 					$('.score').empty();
-					$('.score').append("<br /><p style='font-size:19px'>Quiz Score: <span style='font-size:21px'>"+ score +" </span>pts</p>");
+					//$('.score').append("<br /><p style='font-size:19px'>Quiz Score: <span style='font-size:21px'>"+ score +" </span>pts</p>");
 					
 					
 					if (correctans!==""){
-						$.post('components/getcorrans.php', {ansid:correctans}, 
+						$.get('components/getcorrans.php', {ansid:correctans}, 
 							function(data){
+								console.log(data);
 								$('.correctans').empty();
 								$('.correctans').append(data);	
 						});
@@ -105,7 +109,7 @@
 				dataType: "json",
 				success: function(data) {
 					console.log(data);
-					var anscont = data[0]['anscont'];
+					var anscont = data[0]['anscont']; 
 					if(!anscont==""){
 					
 					$(".bx-"+$idx).append(anscont);

@@ -19,7 +19,7 @@ $correctCount = 0;
 
 
 	foreach ($answerKey as $key => $keyanswer) {
-        if (isset($answer) {
+        if (isset($answer)) {
             // If the answerkey and the user submitted answer are the same, increment the 
             // correct answer counter for the user
             if (strtoupper(rtrim($keyanswer)) == strtoupper($_POST[$key])) {

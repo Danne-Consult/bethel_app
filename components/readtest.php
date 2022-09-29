@@ -38,7 +38,7 @@
 					$score += 1;
 				}	
 				else{
-					$wrongans = $x;
+					$wrongans .= $x.",";
 				}
 			}
 			if($rowx['questiontype']=='checkboxes'){
@@ -48,7 +48,7 @@
 						$score += 1;
 					}
 					else{
-						$wrongans = $x;
+						$wrongans .= $x.",";
 					}
 				}
 			}					

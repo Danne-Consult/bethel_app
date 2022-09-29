@@ -55,7 +55,7 @@
 					?>
 					</ul>
 				</div>
-				<div class="col-md-7 cont" >
+				<div class="col-md-7 cont" id="pagecont">
 					<?php 
 						
 						$coursetext= explode("||", $rowcourse['course_brief']);
