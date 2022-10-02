@@ -35,8 +35,8 @@ if(isset($_SESSION['usercode'])){
 			}
 		?>
 		<form class="contactForm aligncenter loginform" action="components/login-process.php" method="post" name="login" >
-			<label>Email</label><br />
-			<input type="email" name="username" required /><br />
+			<label>Email/Username</label><br />
+			<input type="text" name="username" required /><br />
 			<label>Password</label><br />
 			<input type="password" name="passentry" required /><br />
 			

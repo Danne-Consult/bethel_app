@@ -27,7 +27,7 @@
 			
 			$password= base64_encode(hash('sha256',$password));
 			
-			$sql="SELECT * FROM (SELECT user_type, password, username, email, usercode FROM ".$prefix."user UNION SELECT user_type, password,username,email, usercode FROM ".$prefix."mentor) AS u WHERE u.email='$username' AND u.password='$password'";
+			$sql="SELECT * FROM (SELECT user_type, password, username, email, usercode, shortname FROM ".$prefix."user UNION SELECT user_type, password,username,email, usercode, shortname FROM ".$prefix."mentor) AS u WHERE u.email='$username' OR u.shortname='$username' AND u.password='$password'";
 			
 			$result =  $conn->query($sql);
 			$trws = mysqli_num_rows($result);
@@ -63,7 +63,7 @@
         }
 		$conn->close();
     }else{
-		 header("location: ../login.php?error=try again");
+		header("location: ../login.php?error=try again");
 	}
 }
 ?>

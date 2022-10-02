@@ -21,6 +21,7 @@
 			 
 				$namex=mysqli_real_escape_string($conn,$_POST['namex']);
 				$emailx=mysqli_real_escape_string($conn,$_POST['emailx']);
+				$usernamex=mysqli_real_escape_string($conn,$_POST['username']);
 				$genderx=mysqli_real_escape_string($conn,$_POST['genderx']);
 				$datebirthx=mysqli_real_escape_string($conn,$_POST['datebirthx']);
 				$countyx=mysqli_real_escape_string($conn,$_POST['countyx']);
@@ -42,7 +43,7 @@
 				
 				$randstr = generateRandomString();
 				
-				$sql="INSERT INTO ".$prefix."user (username,email,password,gender,dateofbirth,county,inschool,schoollevel,schoolname.schoolloc,progprev,progby,yesprogprev,howdidyou,usercode,user_type) VALUES ('$namex','$emailx','$password','$genderx','$datebirthx','$countyx','$inschoolx','$edulevel','$schoolloc','$progprev','$progby','$yesprogprev','$howdidyou','$randstr','$usertype')";
+				$sql="INSERT INTO ".$prefix."user (username,email,password,gender,dateofbirth,county,inschool,schoollevel,schoolname.schoolloc,progprev,progby,yesprogprev,howdidyou,usercode,user_type, username) VALUES ('$namex','$emailx','$password','$genderx','$datebirthx','$countyx','$inschoolx','$edulevel','$schoolloc','$progprev','$progby','$yesprogprev','$howdidyou','$randstr','$usertype', '$usernamex')";
 				$conn->query($sql);
 				
 				$sql2="SELECT * FROM ".$prefix."user WHERE email='$emailx'";
