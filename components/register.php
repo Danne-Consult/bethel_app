@@ -1,8 +1,5 @@
 <?php
-   ob_start();
-    session_start();
-    session_regenerate_id();
-	$new_sessionid = session_id();
+    session_start();	
 	require '../manager/config/_database/database.php';
 	
 	function generateRandomString($length = 10) {
@@ -43,35 +40,38 @@
 				
 				$randstr = generateRandomString();
 				
-				$sql="INSERT INTO ".$prefix."user (username,email,password,gender,dateofbirth,county,inschool,schoollevel,schoolname.schoolloc,progprev,progby,yesprogprev,howdidyou,usercode,user_type, username) VALUES ('$namex','$emailx','$password','$genderx','$datebirthx','$countyx','$inschoolx','$edulevel','$schoolloc','$progprev','$progby','$yesprogprev','$howdidyou','$randstr','$usertype', '$usernamex')";
-				$conn->query($sql);
+				$sql="INSERT INTO ".$prefix."user (username,email,password,gender,dateofbirth,county,inschool,schoollevel,schoolname,schoolloc,progprev,progby,yesprogprev,howdidyou,usercode,user_type, shortname) VALUES ('$namex','$emailx','$password','$genderx','$datebirthx','$countyx','$inschoolx','$edulevel','$schoolname','$schoolloc','$progprev','$progby','$yesprogprev','$howdidyou','$randstr','$usertype','$usernamex')";
+
+				if(!$conn->query($sql)){
+					header("location: ../register.php?fmt=stud&error=We could not connect to server. Contact the administrator");
+				}
 				
-				$sql2="SELECT * FROM ".$prefix."user WHERE email='$emailx'";
+				$sql2="SELECT * FROM ".$prefix."user WHERE shortname='$usernamex'";
 				$result =  $conn->query($sql2);
 				$trws = mysqli_num_rows($result);
+
 				if($trws==1){
 					$rws =  $result->fetch_array();
 					$_SESSION['userid']=$rws['usercode'];
 					$_SESSION['username'] = $rws['username'];
 					$_SESSION['usertype'] = $rws['user_type'];
 					$_SESSION['lastlogintime'] = time();
-					
-						if(!$_SESSION['userid'] == ""){
-							$sqlx= "UPDATE ".$prefix."user SET lastlogintime='$currdatetime' WHERE email='$emailx'";
+
+						if($_SESSION['userid'] !== ""){
+							$sqlx= "UPDATE ".$prefix."user SET lastlogintime='$currdatetime' WHERE shortname='$usernamex'";
 							$conn->query($sqlx);
 							
 							header("location:../index.php?status=Registration successful");  	  
 						}else{
-							header("location: ../register.php?error=unable to register user. Contact the administrator");
+							header("location: ../register.php?fmt=stud&error=unable to register user. Please contact the administrator!");
 						}
-					}
-					else {
+					}else {
 					
-						header("location: ../register.php?error=unable to register user. Contact the administrator");
+						header("location: ../register.php?fmt=stud&error=User not found. Please contact the administrator!");
 						exit();
 				}
 			}
-			if($_POST['formtype']=='ment') {
+			/*if($_POST['formtype']=='ment') {
 				$namex=mysqli_real_escape_string($conn,$_POST['namex']);
 				$emailx=mysqli_real_escape_string($conn,$_POST['emailx']);
 				$telx=mysqli_real_escape_string($conn,$_POST['telx']);
@@ -95,7 +95,6 @@
 				
 				$sql="INSERT INTO ".$prefix."mentor (username,email,mentor_tel,mentor_gender,mentor_dateofbirth,mentor_county,progprev,progby,yesprogprev,howdidyou,password,usercode,user_type) VALUES ('$namex','$emailx','$telx=','$genderx','$datebirthx','$countyx','$progprev','$progby','$yesprogprev','$howdidyou','$password','$randstr','$usertype')";
 			
-				$conn->query($sql);
 				
 				$sql2="SELECT * FROM ".$prefix."mentor WHERE email='$emailx'";
 				echo $sql2;
@@ -124,21 +123,21 @@
 						
 							header("location:../index.php?status=Registration successful");  	  
 						}else{
-							header("location: ../register.php?error=unable to register user. Contact the administrator");
+							header("location: ../register.php?fmt=ment&error=unable to register user. Contact the administrator");
 						}
 					}
 					else {
 						
-						header("location: ../register.php?error=unable to register user. Contact the administrator");
+						header("location: ../register.php?fmt=ment&error=unable to register user. Contact the administrator");
 						exit();
 				}
 				
 				
 				
-			}
+			}*/
         }
 		$conn->close();
     }else{
-		 header("location: ../register.php?error=unable to register user. Contact the administrator");
+		 header("location: ../register.php?fmt=stud&error=unable to register user. Contact the administrator");
 	}
 ?>

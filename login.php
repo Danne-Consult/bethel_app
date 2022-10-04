@@ -1,7 +1,7 @@
 <?php 
 session_start();
-if(isset($_SESSION['usercode'])){
-	header('location:home.php');
+if(isset($_SESSION['userid'])){
+	header('location:index.php');
 }
 ?>
 

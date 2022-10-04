@@ -1,7 +1,7 @@
 <?php 
 $formtype = $_GET['fmt'];
 if(empty($formtype)){
-	header("location:registertype.php");
+	header("location:registertype.php?fmt=stud");
 }
 ?>
 <!DOCTYPE html>

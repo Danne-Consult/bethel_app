@@ -183,8 +183,9 @@ tr:hover{background-color:#F9F7F7;}
     background: #ab770f;
 }
 
-.morebtn{font-weight: 400; font-size: 90%; color: #fff !important; padding: 13px 24px; background-color: #ff4200; border-radius: 200px;}
-.morebtn:hover{background-color: #d23a05; color:#fff !important;}
+.morebtn{font-weight: 400; font-size: 90%; color: #fff !important; padding: 13px 24px; background-color: #ff4200; border-radius: 200px; transition: all 0.3s ease-in-out;}
+.morebtn:hover{background-color: #d23a05; color:#fff !important; text-decoration:none;}
+.greyed {background-color:#ccc; color:#666; transition: all 0.3s ease-in-out;}
 
 .nextbtn{ border: none !important; font-weight: 400;  font-size: 90%;  color: #fff !important;  padding: 13px 24px;  background-color: #3e690b;  border-radius: 200px;}
 .nextbtn:hover{background-color: #73a539; color:#fff !important;}

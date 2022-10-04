@@ -27,23 +27,24 @@
 			
 			$password= base64_encode(hash('sha256',$password));
 			
-			$sql="SELECT * FROM (SELECT user_type, password, username, email, usercode, shortname FROM ".$prefix."user UNION SELECT user_type, password,username,email, usercode, shortname FROM ".$prefix."mentor) AS u WHERE u.email='$username' OR u.shortname='$username' AND u.password='$password'";
-			
+			$sql="SELECT * FROM (SELECT user_type, password, username, email, usercode, shortname FROM ".$prefix."user UNION SELECT user_type, password,username,email, usercode, shortname FROM ".$prefix."mentor) AS u WHERE u.email='$username' OR u.shortname='$username'";
 			$result =  $conn->query($sql);
+			$rws =  $result->fetch_array();
 			$trws = mysqli_num_rows($result);
-			if($trws==1){
-				$rws =  $result->fetch_array();
+			
+			if($rws['password'] == $password){
+				
 				$_SESSION['userid']=$rws['usercode'];
 				$_SESSION['usertype']=$rws['user_type'];
 				$_SESSION['username'] = $rws['username'];
 				$_SESSION['lastlogintime'] = time();
 				
 					if(!$_SESSION['userid'] == ""){
-						if($rws['usertype']=="stud"){
+						if($rws['user_type']=="stud"){
 							$sqlx= "UPDATE ".$prefix."user SET lastlogintime='$currdatetime' WHERE email='$username'";
 							$conn->query($sqlx);
 						}
-						if($rws['usertype']=="ment"){
+						if($rws['user_type']=="ment"){
 							$sqlx= "UPDATE ".$prefix."mentor SET lastlogintime='$currdatetime' WHERE email='$username'";
 							$conn->query($sqlx);
 						}
@@ -52,8 +53,7 @@
 					}else{
 						header("location: ../login.php?error=unable to verify user. Contact the administrator");
 					}
-				}
-				else {
+				}else {
 				$errmsg_arr[] = 'User name or Password incorrect';
 				$errflag = true;
 				if($errflag) {

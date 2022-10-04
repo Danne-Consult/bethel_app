@@ -166,20 +166,26 @@
 	</div>
 	<hr />
 
-	
+	<p><b>A student can use an email or username to access the application. Enter one if the student will be accessing the application on their own.</b></p><br />
 	<div class="row">
 		<div class="col-md-6">
-			<label for="emailx">Email <i>*optional- Add if student will log in on their own</i></label>
+			<label for="emailx">Email<i> *optional</i></label><br />
 			<input type="email" name="emailx" placeholder="Email" />
 		</div>
 	</div>
 	<div class="row">
+		<div class="col-md-7">
+			<label style="float: none;" for="username">Username<i> *optional</i></label><br />
+			<input type="text" style="width:60%; float:left;" name="username" id="usernamex" placeholder="create your username" /><div style="float:left;" id="usercheck"></div>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-md-6">
-			<label for="datebirthx">Password</label>
+			<label for="datebirthx">Password</label><br />
 			<input type="password" name="passwordx" placeholder="Enter Password"  />
 		</div>
 		<div class="col-md-6">
-			<label for="datebirthx">Confirm Password</label>
+			<label for="datebirthx">Confirm Password</label><br />
 			<input type="password" name="repasswordx" placeholder="Re-enter Password"  />
 		</div>
 	</div>
@@ -196,5 +202,53 @@
 		
 	
 </div>
+
+<script>
+	$(document).ready(function(){
+		$("#usernamex").keyup(function(){
+			var username = $("#usernamex").val();
+			var usercheck = $("#usercheck");
+			var urlx="../components/usernamecheck.php";
+
+			function hasWhiteSpace(s) {
+				return /\s/g.test(s);
+			}
+
+			if(username==""){
+				usercheck.empty();
+				$("#usernamex").css({"background-color": "#f2f2f2"});
+
+			}else if(username.length < 5){
+
+				usercheck.html("Should be more than 5 characters");
+				$("#usernamex").css({"background-color": "#f5d2d2"});
+				usercheck.css({"color":"#de1c1c"})
+
+			}else if(hasWhiteSpace(username)){
+				usercheck.html("Username cannot contain spaces!");
+				$("#usernamex").css({"background-color": "#f5d2d2"});
+				usercheck.css({"color":"#de1c1c"})
+						
+			}else{
+					
+				$.get(urlx, {"username":username}, function(data, status){
+				if(data==0){
+					usercheck.empty();
+					usercheck.html("Username is available.");
+					$("#usernamex").css({"background-color": "#b3d3ba"});
+					usercheck.css({"color":"#4f8061"})
+				}else{
+					usercheck.empty();
+					usercheck.html("Username has been taken!");
+					$("#usernamex").css({"background-color": "#f5d2d2"});
+					usercheck.css({"color":"#de1c1c"})
+				}
+					
+				});
+			
+			}
+		});
+	});
+</script>
 </body>
 </html>

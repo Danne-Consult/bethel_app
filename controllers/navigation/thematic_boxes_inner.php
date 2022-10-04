@@ -20,7 +20,7 @@ $rowy = $resulty->fetch_assoc();
 						$msg = '<div class="col-md-3" ><div class="themebox box'.$rowx["course_number"].'" style="background:url(manager/assets/uploads/'.$rowx["course_banner"].') no-repeat center; background-size:cover;"><div class="titlebox"><h4><span>Unit '.$rowx["course_number"].'</span><br />'.$rowx["course_title"].'</h4>';
 						
 						if($rowy['levelon']==$rowx["course_number"]){$msg .= '<p class="aligncenter"><a href="course.php?course='.$rowx["course_number"].'" class="morebtn">Get Started</a></p>';}
-						if($rowy['levelon'] > $rowx["course_number"]){$msg .= '<p class="aligncenter" style="color:#ffffff;"><i>completed</i></p>';}
+						if($rowy['levelon'] > $rowx["course_number"]){$msg .= '<p class="aligncenter"><a href="course.php?course='.$rowx["course_number"].'" class="morebtn greyed">View Unit</a>';}
 						
 						if($_SESSION['usertype']=='ment'){$msg .= '<p class="aligncenter"><a href="course.php?course='.$rowx["course_number"].'" class="morebtn">Get Started</a></p>';}
 						

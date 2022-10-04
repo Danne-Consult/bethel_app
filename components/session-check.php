@@ -1,19 +1,14 @@
 <?php
-	ob_start();
- 
-    if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    } 
-	
+ 	session_start(); 
+    
 	if($_SESSION['userid']==""){
-        header("location:login.php?session=notset");
+        header("location:login.php");
     }
 	
 	if(time() - $_SESSION['lastlogintime']> 10800){
 		session_unset();
         session_destroy();       
-		header("location:login.php?session=notset");
+		header("location:login.php");
 		exit;
 	}else{
 		$_SESSION['lastlogintime'] = time();

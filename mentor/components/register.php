@@ -29,6 +29,7 @@
 		$yesprogprev=mysqli_real_escape_string($conn,$_POST['yesprogprev']);
 		$passwordx=mysqli_real_escape_string($conn,$_POST['passwordx']);
         $repasswordx=mysqli_real_escape_string($conn,$_POST['repasswordx']);
+		$username=mysqli_real_escape_string($conn,$_POST['username']);
 		$usertype='stud';
 		
 		$registrarid= $_SESSION['userid'];
@@ -46,7 +47,7 @@
 		
 		$randstr = generateRandomString();
 		
-		$sql="INSERT INTO ".$prefix."user (username,email,password,gender,dateofbirth,county,inschool,schoollevel,schoolname,progprev,progby,yesprogprev,usercode,user_type,mentor) VALUES ('$namex','$emailx','$password','$genderx','$datebirthx','$countyx','$inschoolx','$edulevel','$schoolname','$progprev','$progby','$yesprogprev','$randstr','$usertype', '$rws1[0]')";
+		$sql="INSERT INTO ".$prefix."user (username,email,password,gender,dateofbirth,county,inschool,schoollevel,schoolname,progprev,progby,yesprogprev,usercode,user_type,mentor, shortname) VALUES ('$namex','$emailx','$password','$genderx','$datebirthx','$countyx','$inschoolx','$edulevel','$schoolname','$progprev','$progby','$yesprogprev','$randstr','$usertype', '$rws1[0]', $username)";
 		
 		echo $sql;
 		

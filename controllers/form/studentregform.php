@@ -1,4 +1,4 @@
-<form class="contactForm" action="components/register.php" method="post" name="login" >
+<form class="contactForm" action="components/register.php" method="POST" name="login" >
 	<input type="hidden" name="formtype" value="<?php echo $formtype; ?>" />
 	<div class="row">
 		<div class="col-md-12">
@@ -10,14 +10,14 @@
 	<div class="row">
 		<div class="col-md-12">
 			<label for="username">Username <i>*Create a username that you will use  to access the application</i></label>
-			<input type="text" style="width:60%; float:left;" name="username" id="usernamex" placeholder="create your username" /><div style="float:left;" id="usercheck"></div>
+			<input type="text" style="width:60%; float:left;" name="username" id="usernamex" placeholder="create your username" required /><div style="float:left;" id="usercheck"></div>
 		</div>
 	</div>
 	
 	<div class="row">
 		<div class="col-md-6">
 			<label for="emailx">Email <i>*Optional</i></label>
-			<input type="email" name="emailx" required />
+			<input type="email" name="emailx"  />
 		</div>
 		<div class="col-md-6">
 			<label for="genderx">Gender</label>
@@ -122,10 +122,10 @@
 		</div>
 		<div class="col-md-12">
 			<label for="progby">If "Yes", by which organization</label><br />
-			<select name="progby" required>
-				<option>...</option>
-				<option name="Peers/Friends">AKGIS</option>
-				<option name="Google search">Other</option>
+			<select name="progby">
+				<option value="">...</option>
+				<option value="AKGIS">AKGIS</option>
+				<option value="Other">Other</option>
 			</select>
 		</div>
 	</div>
