@@ -87,12 +87,6 @@
 					
 
 				</div>
-				<!--<div class="col-md-2 sidebar">
-					<div class="darkside">
-						<h4>Notes and Reference</h4>
-						<?php include 'components/get_links.php'; ?>
-					</div>
-				</div>-->
 			</div>
 		</article>
 	</div>

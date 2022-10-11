@@ -3,13 +3,21 @@
 
 		include '../config/_database/database.php';
 		
-		$thematinum = mysqli_real_escape_string($conn,$_POST["thematicarea"]);
-		$section = mysqli_real_escape_string($conn,$_POST["section"]);
-		$questtype = mysqli_real_escape_string($conn,$_POST["qtype"]);
-		$question = mysqli_real_escape_string($conn,$_POST["question"]);
-		$answers = mysqli_real_escape_string($conn,$_POST["answers"]);
-		$correctans = mysqli_real_escape_string($conn,$_POST["correctans"]);
-		$comments = mysqli_real_escape_string($conn,$_POST["comments"]);
+		//$thematinum = mysqli_real_escape_string($conn,$_POST["thematicarea"]);
+		//$section = mysqli_real_escape_string($conn,$_POST["section"]);
+		//$questtype = mysqli_real_escape_string($conn,$_POST["qtype"]);
+		//$question = mysqli_real_escape_string($conn,$_POST["question"]);
+		//$answers = mysqli_real_escape_string($conn,$_POST["answers"]);
+		//$correctans = mysqli_real_escape_string($conn,$_POST["correctans"]);
+		//$comments = mysqli_real_escape_string($conn,$_POST["comments"]);
+
+		$thematinum = $_POST["thematicarea"];
+		$section =$_POST["section"];
+		$questtype = $_POST["qtype"];
+		$question = $_POST["question"];
+		$answers = $_POST["answers"];
+		$correctans = $_POST["correctans"];
+		$comments = $_POST["comments"];
 
 		$numques = count($question);
 		

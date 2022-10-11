@@ -2,7 +2,7 @@
     $hostname = "localhost";
     $user = "root";
     $password = "root";
-    $database = "bethel_22";
+    $database = "bethel_old";
     $prefix = "djfk_";
 	
 	// Create database connection
